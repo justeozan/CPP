@@ -5,9 +5,11 @@ CC		=	c++
 CFLAGS	=	-Werror -Wall -Wextra -std=c++98
 RM		=	rm -rf
 
-SRC		=	phonebook.cpp
+SRC		=	main.cpp\
+			Contact.cpp\
+			PhoneBook.cpp
 
-OBJ		=	$(NAME:.cpp=.o)
+OBJ		=	$(SRC:.cpp=.o)
 
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
