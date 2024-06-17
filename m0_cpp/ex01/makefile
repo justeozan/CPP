@@ -1,21 +1,29 @@
-.DEFAULT: all
+.DEFAULT_GOAL: all
 
 NAME	=	phonebook
-CC		=	c++
+
+SRC		=	src/main.cpp\
+			src/Contact.cpp\
+			src/PhoneBook.cpp
+
+OBJ		=	$(patsubst src/%.cpp, obj/%.o, $(SRC))
+DEP		=	$(patsubst src/%.cpp, dep/%.o, $(SRC))
+
+# Controls
 CFLAGS	=	-Werror -Wall -Wextra -std=c++98
+CC		=	c++ $(CFLAGS)
 RM		=	rm -rf
-
-SRC		=	main.cpp\
-			Contact.cpp\
-			PhoneBook.cpp
-
-OBJ		=	$(SRC:.cpp=.o)
+I		=	includes
+INC		=	-I$(I)
+SRC_DIR	=	src
+OBJ_DIR	=	obj
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
+	$(CC) $(INC) $(OBJ) -o $(NAME) 
 
-%.o:	%.cpp
-	$(CC) $(CFLAGS) -c $< -o $@
+$(OBJ_DIR)/%.o:	src/%.cpp makefile
+	@mkdir -p $(@D)
+	$(CC) $(INC) -c $< -o $@
 
 all:	$(NAME)
 

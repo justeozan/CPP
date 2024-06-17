@@ -1,11 +1,10 @@
-#include "Contact.hpp"
-#include "PhoneBook.hpp"
-#include <iostream>
-
+#include "../includes/header.hpp"
 
 int main(void)
 {
 	std::string response;
+	PhoneBook	book;
+	
 
 	while (1)
 	{
@@ -15,11 +14,12 @@ int main(void)
 			std::cout << response << std::endl;
 		if (response == "ADD")
 		{	
-			add_contact();
+			book.addContact();
 		}
 		if (response == "SEARCH")
 		{
-			search_contact();
+			book.displayContacts();
+			book.searchContact();
 		}
 		if (response == "EXIT")
 			break;
