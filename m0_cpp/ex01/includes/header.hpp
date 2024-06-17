@@ -21,6 +21,7 @@ class PhoneBook;
 # include <iostream>
 # include <string>
 # include <sstream>
+# include <limits>
 
 /* private library */
 
