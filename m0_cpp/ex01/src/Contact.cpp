@@ -1,40 +1,53 @@
 #include "../includes/header.hpp"
 
-/* Construceur de ma class Contact.
-me permet d'initialiser des variables au prealable */
+/**
+ * @brief Constructor of my Contact class.
+ * Allows me to initialize variables beforehand.
+ */
 Contact::Contact() : _first_name("")
 {
 	_isInit = false;
 }
 
-/* Destructeur de ma class Contact.
-ce qui me permettra de free au besoin */
+/**
+ * @brief Destructor of my Contact class.
+ * This allows me to free resources if needed.
+ */
 Contact::~Contact()
 {
 
 }
 
-/* la syntaxe "Contact::" permet d'indiquer qu'on se sert 
-d'une fonction initialiser dans la class Contact.
-Et sinon la fonction permet de creer un contact */
+/**
+ * @brief Initializes the contact.
+ */
 void	Contact::initContact()
 {
-	std::cout << "Contact Initializations...\nYou will have 5 steps.\n" << std::endl;
+	std::cout << std::endl;
 	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	_first_name = _getUserInput("1. Enter The Firstname : ");
 	_last_name = _getUserInput("2. Enter The Lastname : ");
 	_nickname = _getUserInput("3. Enter The Nickname : ");
 	_phone_number = _getUserInput("4. Enter The Phone number : ");
 	_darkest_secret = _getUserInput("5. Enter The darkest secret : ");
+	std::cout << GREEN "Contact added !" RESET << std::endl;
 	std::cout << std::endl;
 	_isInit = true;
 }
 
+/**
+ * @brief Checks if the contact is initialized.
+ * @return true if the contact is initialized, false otherwise.
+ */
 bool	Contact::isInitContact(void) const
 {
 	return (_isInit);
 }
 
+/**
+ * @brief Prints the contact information.
+ * @param index The index of the contact.
+ */
 void	Contact::printContact(int index) const
 {
 	if (_first_name.empty() || _last_name.empty() || _nickname.empty())
@@ -47,6 +60,10 @@ void	Contact::printContact(int index) const
 	std::cout << std::endl;
 }
 
+/**
+ * @brief Displays the contact information.
+ * @param index The index of the contact.
+ */
 void	Contact::viewContact(int index) const
 {
 	std::cout << "|" << std::setw(10) << index << std::flush;
@@ -56,6 +73,11 @@ void	Contact::viewContact(int index) const
 	std::cout << "|" << std::endl;
 }
 
+/**
+ * @brief Checks if the string is printable.
+ * @param str The string to check.
+ * @return true if the string is printable, false otherwise.
+ */
 static bool _isPrintable(const std::string& str)
 {
 	for (std::string::const_iterator i = str.begin(); i != str.end(); ++i)
@@ -68,9 +90,11 @@ static bool _isPrintable(const std::string& str)
 	return true;
 }
 
-/* Function that allows me to retrieve user input.
-Here I prefer to use getline instead of cin.
-cin.good(): checks if the stream is in good state. */
+/**
+ * @brief Gets the user input. Here I prefer to use getline instead of cin. cin.good(): checks if the stream is in good state.
+ * @param str The string to display.
+ * @return The user input.
+ */
 std::string Contact::_getUserInput(std::string str) const
 {
 	std::string input = "";

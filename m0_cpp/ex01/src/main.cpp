@@ -1,19 +1,19 @@
 #include "../includes/header.hpp"
 
-int main(void)
+/**
+ * @brief Main function of the program.
+ */
+int	main(void)
 {
 	std::string response;
 	PhoneBook	book;
-	
 
 	while (1)
 	{
-		std::cout << "que veux tu gros ? [ADD / SEARCH / EXIT] : " << std::flush;
+		std::cout << "What would you like to do? [ADD / SEARCH / EXIT]: " << std::flush;
 		std::cin >> response;
-		// if (!response.empty())
-		// 	std::cout << response << std::endl;
 		if (response == "ADD" || response == "1")
-		{	
+		{
 			book.addContact();
 		}
 		if (response == "SEARCH" || response == "2")

@@ -31,6 +31,7 @@ class PhoneBook;
 /* Colors */
 
 # define RED	"\e[0;31m"
+# define GREEN	"\e[0;32m"
 # define RESET	"\x1b[0m"
 
 
