@@ -20,6 +20,7 @@ Et sinon la fonction permet de creer un contact */
 void	Contact::initContact()
 {
 	std::cout << "Contact Initializations...\nYou will have 5 steps.\n" << std::endl;
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	_first_name = _getUserInput("1. Enter The Firstname : ");
 	_last_name = _getUserInput("2. Enter The Lastname : ");
 	_nickname = _getUserInput("3. Enter The Nickname : ");
@@ -38,7 +39,6 @@ void	Contact::printContact(int index) const
 {
 	if (_first_name.empty() || _last_name.empty() || _nickname.empty())
 		return ;
-	std::cout << "je passe la" << std::endl;								//!!!!!!!!!!!!!!!!!!!!1
 	std::cout << std::endl;
 	std::cout << "Contact: " << index << std::endl;
 	std::cout << "Firstname\t" << _first_name << std::endl;
@@ -56,55 +56,40 @@ void	Contact::viewContact(int index) const
 	std::cout << "|" << std::endl;
 }
 
-/* Fonction qui me permet de recuperer une valeur dentre de l'utilisateur.
-ici je prefere utiliser getline, plutot que cin.
-cin.good(): verifie si le flux est en bon etat.*/
-// std::string Contact::_getUserInput(std::string str) const
-// {
-// 	std::string	input = "";
-// 	bool		validInput = false;
+static bool _isPrintable(const std::string& str)
+{
+	for (std::string::const_iterator i = str.begin(); i != str.end(); ++i)
+	{
+		if (!std::isprint(*i))
+		{
+			return false;
+		}
+	}
+	return true;
+}
 
-// 	std::cout << str << std::flush;
-// 	std::getline(std::cin, input);
-// 	if (std::cin.good() && !input.empty())
-// 		validInput = true;
-// 	else
-// 	{
-// 		if (!std::cin)
-// 		{
-// 			std::cout << "X" << std::endl;
-// 			return ("empty");
-// 		}
-// 		std::cin.clear();
-// 		std::cout << "Entree invalide. Veuillez reessayer" << std::endl;
-// 		_getUserInput(str);
-// 	}
-// 	(void)validInput;
-// 	return (input);
-// }
-
+/* Function that allows me to retrieve user input.
+Here I prefer to use getline instead of cin.
+cin.good(): checks if the stream is in good state. */
 std::string Contact::_getUserInput(std::string str) const
 {
-	std::string	input = "";
-	bool		validInput = false;
+	std::string input = "";
+	bool validInput = false;
 
 	do
 	{
 		std::cout << str << std::flush;
 		std::getline(std::cin, input);
-		if (std::cin.good() && !input.empty())
+		if (std::cin.good() && !input.empty() && _isPrintable(input))
 			validInput = true;
 		else
 		{
 			if (!std::cin)
 				std::cout << "Error" << std::endl;
 			std::cin.clear();
-			std::cout << RED "Entree invalide. Veuillez ressayer" RESET << std::endl;
+			std::cout << RED "Invalid input. Please try again" RESET << std::endl;
 			validInput = false;
 		}
 	} while (!validInput);
-	
 	return (input);
 }
-
-
