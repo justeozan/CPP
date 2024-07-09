@@ -12,16 +12,16 @@ int main(void)
 		std::cin >> response;
 		if (!response.empty())
 			std::cout << response << std::endl;
-		if (response == "ADD")
+		if (response == "ADD" || response == "1")
 		{	
 			book.addContact();
 		}
-		if (response == "SEARCH")
+		if (response == "SEARCH" || response == "2")
 		{
 			book.displayContacts();
 			book.searchContact();
 		}
-		if (response == "EXIT")
+		if (response == "EXIT" || response == "3")
 			break;
 
 	}

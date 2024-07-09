@@ -28,4 +28,10 @@ class PhoneBook;
 # include "Contact.hpp"
 # include "PhoneBook.hpp"
 
+/* Colors */
+
+# define RED	"\e[0;31m"
+# define RESET	"\x1b[0m"
+
+
 #endif
