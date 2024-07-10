@@ -29,6 +29,7 @@ all:	$(NAME)
 
 clean:
 	$(RM) $(OBJ)
+	$(RM) $(OBJ_DIR)
 
 fclean:	clean
 	$(RM) $(NAME)
