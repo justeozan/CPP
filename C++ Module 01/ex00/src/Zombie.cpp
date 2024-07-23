@@ -1,8 +1,7 @@
 #include "../includes/Zombie.hpp"
 
-Zombie::Zombie(void)
+Zombie::Zombie(void): _name("unnamed")
 {
-	_name = "unnamed";
 	std::cout << _name << " is born" << std::endl;
 }
 

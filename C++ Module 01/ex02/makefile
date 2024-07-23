@@ -1,4 +1,4 @@
 all:
 	@clear
-	c++ *.cpp -Wall -Wextra -Werror -o brain
+	c++ *.cpp -Wall -Wextra -Werror -std=c++98 -o brain
 	./brain

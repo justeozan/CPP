@@ -1,11 +1,12 @@
 .DEFAULT_GOAL: all
 
-NAME	=	sed
+NAME	=	harlFilter
 
-SRC		=	main.cpp
+SRC		=	src/main.cpp\
+			src/Harl.cpp
 
-OBJ		=	$(patsubst %.cpp, %.o, $(SRC))
-DEP		=	$(patsubst %.cpp, dep/%.o, $(SRC))
+OBJ		=	$(patsubst src/%.cpp, obj/%.o, $(SRC))
+DEP		=	$(patsubst src/%.cpp, dep/%.o, $(SRC))
 
 # Controls
 CFLAGS	=	-Werror -Wall -Wextra -std=c++98
@@ -25,9 +26,9 @@ $(OBJ_DIR)/%.o:	src/%.cpp makefile
 
 simple:
 	@clear
-	c++ src/*.cpp -Werror -Wextra -Wall -std=c++98 -o horde
-	./horde
-	@rm horde
+	c++ src/*.cpp -Werror -Wextra -Wall -std=c++98 includes/Harl.hpp -o harl
+	./harl
+	@rm harl
 
 all:	$(NAME)
 
