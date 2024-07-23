@@ -12,6 +12,8 @@ int	main(void)
 	{
 		std::cout << "What would you like to do? [ADD / SEARCH / EXIT]: " << std::flush;
 		std::cin >> response;
+		if (!std::cin)
+			break ;
 		if (response == "ADD" || response == "1")
 		{
 			book.addContact();

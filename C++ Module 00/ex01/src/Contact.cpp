@@ -57,6 +57,8 @@ void	Contact::printContact(int index) const
 	std::cout << "Firstname\t" << _first_name << std::endl;
 	std::cout << "Lastname\t" << _last_name << std::endl;
 	std::cout << "Nickname\t" << _nickname << std::endl;
+	std::cout << "Phone number\t" << _phone_number << std::endl;
+	std::cout << "Darkest secret\t" << _darkest_secret << std::endl;
 	std::cout << std::endl;
 }
 
@@ -109,7 +111,7 @@ std::string Contact::_getUserInput(std::string str) const
 		else
 		{
 			if (!std::cin)
-				std::cout << "Error" << std::endl;
+				std::freopen("/dev/tty", "r", stdin);
 			std::cin.clear();
 			std::cout << RED "Invalid input. Please try again" RESET << std::endl;
 			validInput = false;
