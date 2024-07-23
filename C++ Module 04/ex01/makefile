@@ -6,8 +6,7 @@ SRC		=	src/main.cpp\
 			src/Animal.cpp\
 			src/Cat.cpp\
 			src/Dog.cpp\
-			src/WrongAnimal.cpp\
-			src/WrongCat.cpp
+			src/Brain.cpp
 
 OBJ		=	$(patsubst src/%.cpp, obj/%.o, $(SRC))
 DEP		=	$(patsubst src/%.cpp, dep/%.o, $(SRC))
