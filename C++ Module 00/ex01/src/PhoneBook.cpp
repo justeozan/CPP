@@ -59,8 +59,13 @@ void	PhoneBook::searchContact(void) const
 		_contacts[i].printContact(i);
 	else
 	{
+		if (!std::cin)
+		{
+			std::cout << std::endl;
+			exit(EXIT_FAILURE);
+		}
 		std::cin.clear();
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		std::cout << "Error : Invalid entry." << std::endl;
+		std::cout << "Error : Invalid entry.\n" << std::endl;
 	}
 }

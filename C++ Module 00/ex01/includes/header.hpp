@@ -22,6 +22,8 @@ class PhoneBook;
 # include <string>
 # include <sstream>
 # include <limits>
+# include <cstdio>
+# include <cstdlib>
 
 /* private library */
 
