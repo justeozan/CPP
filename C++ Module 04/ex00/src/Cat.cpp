@@ -7,7 +7,7 @@ Cat::Cat(void)
 	std::cout << "Default Cat has been created" << std::endl;
 }
 
-Cat::Cat(const Cat& other)
+Cat::Cat(const Cat& other): Animal(other)
 {
 	*this = other;
 	std::cout << "Copy Cat has been created" << std::endl;

@@ -7,7 +7,7 @@ Dog::Dog(void)
 	std::cout << "Default Dog has been created" << std::endl;
 }
 
-Dog::Dog(const Dog& other)
+Dog::Dog(const Dog& other): Animal(other)
 {
 	*this = other;
 	std::cout << "Copy Dog has been created" << std::endl;
