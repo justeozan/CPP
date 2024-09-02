@@ -1,33 +1,31 @@
-.DEFAULT_GOAL: all
+.DEFAULT_GOAL := simple
 
 NAME	=	sed
 
 SRC		=	main.cpp
 
 OBJ		=	$(patsubst %.cpp, %.o, $(SRC))
-DEP		=	$(patsubst %.cpp, dep/%.o, $(SRC))
 
-# Controls
 CFLAGS	=	-Werror -Wall -Wextra -std=c++98
 CC		=	c++ $(CFLAGS)
 RM		=	rm -rf
-I		=	includes
-INC		=	-I$(I)
+I		=	-Iincludes
 SRC_DIR	=	src
 OBJ_DIR	=	obj
 
 $(NAME): $(OBJ)
-	$(CC) $(INC) $(OBJ) -o $(NAME) 
+	$(CC) $(I) $(OBJ) -o $(NAME) 
 
 $(OBJ_DIR)/%.o:	src/%.cpp makefile
 	@mkdir -p $(@D)
-	$(CC) $(INC) -c $< -o $@
+	$(CC) $(I) -c $< -o $@
 
 simple:
 	@clear
-	c++ src/*.cpp -Werror -Wextra -Wall -std=c++98 -o horde
-	./horde
-	@rm horde
+	@make all -s
+	@./sed test "est" "n'est pas"
+	@echo "You've just replaced 'est' with 'n'est pas' in 'test.replace'"
+	@make fclean -s
 
 all:	$(NAME)
 
@@ -40,4 +38,4 @@ fclean:	clean
 
 re:		fclean all
 
-.PHONY:	all clean fclean re
+.PHONY:	simple all clean fclean re

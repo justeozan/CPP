@@ -27,9 +27,9 @@ $(OBJ_DIR)/%.o:	src/%.cpp makefile
 
 simple:
 	@clear
-	c++ src/*.cpp -Werror -Wextra -Wall -std=c++98 includes/Zombie.hpp -o horde
-	./horde
-	@rm horde
+	@make all -s
+	@./horde
+	@make fclean -s
 
 all:	$(NAME)
 
@@ -42,4 +42,4 @@ fclean:	clean
 
 re:		fclean all
 
-.PHONY:	all clean fclean re
+.PHONY:	simple all clean fclean re	

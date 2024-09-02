@@ -39,6 +39,11 @@ void	PhoneBook::displayContacts(void) const
 {
 	std::cout << std::endl;
 	std::cout << "---- PHONEBOOK CONTACTS ----" << std::endl;
+	std::cout << "|" << std::setw(10) << "Index" << std::flush;
+	std::cout << "|" << std::setw(10) << "Firstname" << std::flush;
+	std::cout << "|" << std::setw(10) << "Lastname" << std::flush;
+	std::cout << "|" << std::setw(10) << "Nickname" << std::flush;
+	std::cout << "|" << std::endl;
 	for (int i = 0; i < 8; i++)
 	{
 		if (_contacts[i].isInitContact())
@@ -59,13 +64,16 @@ void	PhoneBook::searchContact(void) const
 		_contacts[i].printContact(i);
 	else
 	{
-		if (!std::cin)
+		if (std::cin.rdstate() == 6)
 		{
 			std::cout << std::endl;
-			exit(EXIT_FAILURE);
+			std::cin.clear();
+			std::cout << GREEN "EXIT" RESET << std::endl;
+			exit(0);
 		}
 		std::cin.clear();
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		std::cout << "Error : Invalid entry.\n" << std::endl;
+		std::cout << RED "Error : Invalid entry.\n" RESET << std::endl;
 	}
 }
+

@@ -15,6 +15,8 @@ int	main(void)
 		if (!std::cin)
 		{
 			std::cout << std::endl;
+			std::cin.clear();
+			std::cout << GREEN "EXIT" RESET << std::endl;
 			break ;
 		}
 		if (response == "ADD" || response == "1")
@@ -25,7 +27,10 @@ int	main(void)
 			book.searchContact();
 		}
 		if (response == "EXIT" || response == "3")
+		{
+			std::cout << GREEN "EXIT" RESET << std::endl;
 			break;
+		}
 
 	}
 	return 0;

@@ -18,6 +18,15 @@ Contact::~Contact()
 
 }
 
+static bool isNumeric(const std::string& str) {
+	for (std::string::size_type i = 0; i < str.size(); ++i) {
+		if (!std::isdigit(str[i]) && !std::isspace(str[i])) {
+			return false;
+		}
+	}
+	return true;
+}
+
 /**
  * @brief Initializes the contact.
  */
@@ -28,7 +37,12 @@ void	Contact::initContact()
 	_first_name = _getUserInput("1. Enter The Firstname : ");
 	_last_name = _getUserInput("2. Enter The Lastname : ");
 	_nickname = _getUserInput("3. Enter The Nickname : ");
-	_phone_number = _getUserInput("4. Enter The Phone number : ");
+	do {
+		_phone_number = _getUserInput("4. Enter The Phone number : ");
+		if (!isNumeric(_phone_number)) {
+			std::cout << RED "Invalid phone number. Please enter only digits." RESET << std::endl;
+		}
+	} while (!isNumeric(_phone_number));
 	_darkest_secret = _getUserInput("5. Enter The darkest secret : ");
 	std::cout << GREEN "Contact added !" RESET << std::endl;
 	std::cout << std::endl;
@@ -68,11 +82,10 @@ void	Contact::printContact(int index) const
  */
 void	Contact::viewContact(int index) const
 {
-	std::cout << "|" << std::setw(10) << index << std::flush;
-	std::cout << "|" << std::setw(10) << _first_name << std::flush;
-	std::cout << "|" << std::setw(10) << _last_name << std::flush;
-	std::cout << "|" << std::setw(10) << _nickname << std::flush;
-	std::cout << "|" << std::endl;
+	std::cout << "|" << std::setw(10) << index << "|" << std::flush;
+	std::cout << std::setw(10) << ((_first_name.length() > 10) ? _first_name.substr(0, 9) + "." : _first_name) << "|" << std::flush;
+	std::cout << std::setw(10) << ((_last_name.length() > 10) ? _last_name.substr(0, 9) + "." : _last_name) << "|" << std::flush;
+	std::cout << std::setw(10) << ((_nickname.length() > 10) ? _nickname.substr(0, 9) + "." : _nickname) << "|" << std::endl;
 }
 
 /**

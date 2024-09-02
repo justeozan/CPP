@@ -1,4 +1,4 @@
-.DEFAULT_GOAL: all
+.DEFAULT_GOAL := simple
 
 NAME	=	harlFilter
 
@@ -6,7 +6,6 @@ SRC		=	src/main.cpp\
 			src/Harl.cpp
 
 OBJ		=	$(patsubst src/%.cpp, obj/%.o, $(SRC))
-DEP		=	$(patsubst src/%.cpp, dep/%.o, $(SRC))
 
 # Controls
 CFLAGS	=	-Werror -Wall -Wextra -std=c++98
@@ -26,9 +25,13 @@ $(OBJ_DIR)/%.o:	src/%.cpp makefile
 
 simple:
 	@clear
-	c++ src/*.cpp -Werror -Wextra -Wall -std=c++98 includes/Harl.hpp -o harl
-	./harl
-	@rm harl
+	@make all -s
+	./harlFilter DEBUG
+	./harlFilter INFO
+	./harlFilter WARNING
+	./harlFilter ERROR
+	valgrind ./harlFilter VALGRIND
+	@make fclean -s
 
 all:	$(NAME)
 
@@ -41,4 +44,4 @@ fclean:	clean
 
 re:		fclean all
 
-.PHONY:	all clean fclean re
+.PHONY:	simple all clean fclean re
