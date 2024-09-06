@@ -26,9 +26,9 @@ $(OBJ_DIR)/%.o:	src/%.cpp makefile
 
 simple:
 	@clear
-	c++ src/*.cpp -Werror -Wextra -Wall -std=c++98 includes/Fixed.hpp -o fixed
+	@make all -s
 	./fixed
-	@rm fixed
+	@make fclean -s
 
 all:	$(NAME)
 
@@ -41,4 +41,4 @@ fclean:	clean
 
 re:		fclean all
 
-.PHONY:	all clean fclean re
+.PHONY:	simple all clean fclean re
