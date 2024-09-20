@@ -12,17 +12,16 @@ DEP		=	$(patsubst src/%.cpp, dep/%.o, $(SRC))
 CFLAGS	=	-Werror -Wall -Wextra -std=c++98
 CC		=	c++ $(CFLAGS)
 RM		=	rm -rf
-I		=	includes
-INC		=	-I$(I)
+I		=	-Iincludes
 SRC_DIR	=	src
 OBJ_DIR	=	obj
 
 $(NAME): $(OBJ)
-	$(CC) $(INC) $(OBJ) -o $(NAME) 
+	$(CC) $(I) $(OBJ) -o $(NAME)
 
-$(OBJ_DIR)/%.o:	src/%.cpp makefile
+$(OBJ_DIR)/%.o:	src/%.cpp makefile includes/Fixed.hpp
 	@mkdir -p $(@D)
-	$(CC) $(INC) -c $< -o $@
+	$(CC) $(I) -c $< -o $@
 
 simple:
 	@clear

@@ -1,4 +1,4 @@
-.DEFAULT_GOAL: all
+.DEFAULT_GOAL = all
 
 NAME	=	ScavTrap
 
@@ -7,29 +7,26 @@ SRC		=	src/main.cpp\
 			src/ScavTrap.cpp
 
 OBJ		=	$(patsubst src/%.cpp, obj/%.o, $(SRC))
-DEP		=	$(patsubst src/%.cpp, dep/%.o, $(SRC))
 
-# Controls
 CFLAGS	=	-Werror -Wall -Wextra -std=c++98
 CC		=	c++ $(CFLAGS)
 RM		=	rm -rf
-I		=	includes
-INC		=	-I$(I)
+INC		=	-Iincludes
 SRC_DIR	=	src
 OBJ_DIR	=	obj
 
 $(NAME): $(OBJ)
 	$(CC) $(INC) $(OBJ) -o $(NAME) 
 
-$(OBJ_DIR)/%.o:	src/%.cpp makefile
+$(OBJ_DIR)/%.o:	src/%.cpp makefile includes/ClapTrap.hpp includes/ScavTrap.hpp
 	@mkdir -p $(@D)
 	$(CC) $(INC) -c $< -o $@
 
 simple:
 	@clear
-	c++ src/*.cpp -Werror -Wextra -Wall -std=c++98 includes/ClapTrap.hpp includes/ScavTrap.hpp -o ScavTrap
+	@make all -s
 	./ScavTrap
-	@rm ScavTrap
+	@make fclean -s
 
 all:	$(NAME)
 
@@ -42,4 +39,4 @@ fclean:	clean
 
 re:		fclean all
 
-.PHONY:	all clean fclean re
+.PHONY:	simple all clean fclean re
