@@ -6,8 +6,8 @@
 class Bureaucrat
 {
 	private:
-		std::string	_name;
 		int			_grade;
+		std::string	_name;
 
 	public:
 		Bureaucrat(std::string const name, int const grade);
@@ -16,9 +16,24 @@ class Bureaucrat
 		std::string	getName();
 		int			getGrade();
 
+		void		incrementGrade();
+		void		decrementGrade();
 
+		class GradeException: public std::exception {};
 
-		
+		class GradeTooHighException: public GradeException
+		{
+			public:
+				const char* what() const throw();
+		};
+
+		class GradeTooLowException: public GradeException
+		{
+			public:
+				const char* what() const throw();
+		};
 };
+
+
 
 #endif /* BUREAUCRAT_HPP */
