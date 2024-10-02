@@ -1,9 +1,9 @@
-#include "../includes/ClapTrap.hpp"
+#include "ClapTrap.hpp"
 
 int	main(void)
 {
 	ClapTrap Baelish("LittleFinger");
-	ClapTrap Varys("Lord Varys");
+	ClapTrap Varys;
 
 	Baelish.displayStatus();
 	Varys.displayStatus();

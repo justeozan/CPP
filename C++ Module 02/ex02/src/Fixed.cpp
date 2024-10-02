@@ -20,6 +20,7 @@ Fixed::Fixed(const Fixed& other)
 }
 
 Fixed::~Fixed() {
+	
 }
 
 Fixed& Fixed::operator=(const Fixed& other)
