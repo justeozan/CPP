@@ -1,4 +1,13 @@
-#include "../includes/ScavTrap.hpp"
+#include "ScavTrap.hpp"
+
+ScavTrap::ScavTrap(void): ClapTrap("Unnamed")
+{
+	_name = "Unnamed";
+	_hitPoints = 100;
+	_energyPoints = 50;
+	_attackDamage = 20;
+	std::cout << MAGENTA "ScavTrap " << _name << " has been created" RESET << std::endl;
+}
 
 ScavTrap::ScavTrap(std::string name): ClapTrap(name)
 {
@@ -6,18 +15,18 @@ ScavTrap::ScavTrap(std::string name): ClapTrap(name)
 	_hitPoints = 100;
 	_energyPoints = 50;
 	_attackDamage = 20;
-	std::cout << "ScavTrap " << _name << " has been created" << std::endl;
+	std::cout << MAGENTA "ScavTrap " << _name << " has been created" RESET << std::endl;
 }
 
 ScavTrap::ScavTrap(const ScavTrap& other): ClapTrap(other._name)
 {
-	std::cout << "Copy ScavTrap " << _name << " has been created" << std::endl;
+	std::cout << MAGENTA "Copy ScavTrap " << _name << " has been created" RESET << std::endl;
 	*this = other;
 }
 
 ScavTrap::~ScavTrap(void)
 {
-	std::cout << "ScavTrap " << _name << " has been destroyed" << std::endl;
+	std::cout << MAGENTA "ScavTrap " << _name << " has been destroyed" RESET << std::endl;
 }
 
 
@@ -33,11 +42,11 @@ ScavTrap& ScavTrap::operator=(const ScavTrap& other)
 void	ScavTrap::attack(const std::string& target)
 {
 	if (_hitPoints <= 0 || _energyPoints <= 0)
-		std::cout << "ScavTrap " << _name << " has not enough energy or hit points to attack" << std::endl;
+		std::cout << CYAN "ScavTrap " << _name << " has not enough energy or hit points to attack" RESET << std::endl;
 	else
 	{
 		_energyPoints--;
-		std::cout << "ScavTrap " << _name << " attacks " << target << ", causing " << _attackDamage << " points of damage!" << std::endl;
+		std::cout << GREEN "ScavTrap " << _name << " attacks " << target << ", causing " << _attackDamage << " points of damage!" RESET << std::endl;
 	}
 }
 

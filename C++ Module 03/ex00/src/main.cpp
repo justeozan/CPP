@@ -3,7 +3,7 @@
 int	main(void)
 {
 	ClapTrap Baelish("LittleFinger");
-	ClapTrap Varys;
+	ClapTrap Varys("Lord Varys");
 
 	Baelish.displayStatus();
 	Varys.displayStatus();

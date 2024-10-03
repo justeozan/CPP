@@ -1,4 +1,4 @@
-#include "../includes/ScavTrap.hpp"
+#include "ScavTrap.hpp"
 
 ScavTrap::ScavTrap(void): ClapTrap("Unnamed")
 {
@@ -6,7 +6,7 @@ ScavTrap::ScavTrap(void): ClapTrap("Unnamed")
 	_hitPoints = 100;
 	_energyPoints = 50;
 	_attackDamage = 20;
-	std::cout << BOLD MAGENTA2 "ScavTrap " << _name << " has been created" RESET << std::endl;
+	std::cout << MAGENTA "ScavTrap " << _name << " has been created" RESET << std::endl;
 }
 
 ScavTrap::ScavTrap(std::string name): ClapTrap(name)
@@ -15,18 +15,18 @@ ScavTrap::ScavTrap(std::string name): ClapTrap(name)
 	_hitPoints = 100;
 	_energyPoints = 50;
 	_attackDamage = 20;
-	std::cout << BOLD MAGENTA2 "ScavTrap " << _name << " has been created" RESET << std::endl;
+	std::cout << MAGENTA "ScavTrap " << _name << " has been created" RESET << std::endl;
 }
 
 ScavTrap::ScavTrap(const ScavTrap& other): ClapTrap(other._name)
 {
-	std::cout << BOLD MAGENTA2 "Copy ScavTrap " << _name << " has been created" RESET << std::endl;
+	std::cout << MAGENTA "Copy ScavTrap " << _name << " has been created" RESET << std::endl;
 	*this = other;
 }
 
 ScavTrap::~ScavTrap(void)
 {
-	std::cout << BOLD MAGENTA2 "ScavTrap " << _name << " has been destroyed" RESET << std::endl;
+	std::cout << MAGENTA "ScavTrap " << _name << " has been destroyed" RESET << std::endl;
 }
 
 ScavTrap& ScavTrap::operator=(const ScavTrap& other)
