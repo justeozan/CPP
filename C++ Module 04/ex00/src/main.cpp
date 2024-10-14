@@ -8,7 +8,7 @@ int main()
 	const Animal* cat = new Cat();
 	const Animal* dog = new Dog();
 	const WrongAnimal* wrongCat = new WrongCat();
-	
+
 	std::cout << std::endl;
 	std::cout << animal->getType() << std::endl;
 	animal->makeSound();
@@ -19,7 +19,7 @@ int main()
 	std::cout << wrongCat->getType() << std::endl;
 	wrongCat->makeSound();
 	std::cout << std::endl;
-	
+
 	delete animal;
 	delete cat;
 	delete dog;
