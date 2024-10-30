@@ -37,12 +37,13 @@ class Form
 		Form(void);
 		Form(std::string const name, int const gradeSigne, int const gradeExecute);
 		~Form(void);
-		Form&	operator=(const Form& other);
-		Form&	operator<<(const Form& other);
+		Form&			operator=(const Form& other);
+		std::ostream&	operator<<(std::ostream& os, const Form& other);
 
 		std::string	getName() const;
 		bool		getSignedStatus() const;
-		int			getGradeLevel() const;
+		int			getGradeSigne() const;
+		int			getGradeExecution() const;
 
 
 		void	maMethode();

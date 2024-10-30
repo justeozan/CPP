@@ -31,13 +31,13 @@ Form&	Form::operator=(const Form& other)
 	return (*this);
 }
 
-Form&	Form::operator<<(const Form& other)
+std::ostream&	Form::operator<<(std::ostream& os, const Form& other)
 {
-	std::cout << "name : " << _name << std::endl;
-	std::cout << "Is signed : " << (_signed ? "Yes (" : "No (") << _signed << ")" << std::endl;
-	std::cout << "Grade for Sign : " << _gradeSign << std::endl;
-	std::cout << "Grade for Execute : " << _gradeExecute << std::endl;
-	
+	std::cout << "Form name : " << other.getName() << std::endl;
+	std::cout << "Is signed : " << (other.getSignedStatus() ? "Yes (" : "No (") << other.getSignedStatus() << ")" << std::endl;
+	std::cout << "Grade for Sign : " << other.getGradeSigne() << std::endl;
+	std::cout << "Grade for Execute : " << other.getGradeExecution() << std::endl;
+	return (os);
 }
 
 

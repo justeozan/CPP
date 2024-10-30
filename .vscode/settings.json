@@ -52,7 +52,11 @@
 		"streambuf": "cpp",
 		"cinttypes": "cpp",
 		"typeinfo": "cpp",
-		"fstream": "cpp"
+		"fstream": "cpp",
+		"charconv": "cpp",
+		"format": "cpp",
+		"variant": "cpp",
+		"text_encoding": "cpp"
 	},
 	"editor.tokenColorCustomizations": {
 		"comments": "",
