@@ -30,12 +30,14 @@ class Form
 	private:
 		const std::string	_name;
 		bool				_signed;
-		const int			_gradeLevel;
+		int					_gradeSign;
+		int					_gradeExecute;
 
 	public:
 		Form(void);
-		Form(std::string name);
+		Form(std::string const name, int const gradeSigne, int const gradeExecute);
 		~Form(void);
+		Form&	operator=(const Form& other);
 		Form&	operator<<(const Form& other);
 
 		std::string	getName() const;
@@ -44,6 +46,20 @@ class Form
 
 
 		void	maMethode();
+
+		class	GradeException: public std::exception {};
+
+		class	GradeTooLowException: public GradeException
+		{
+			public:
+				const char* what() const throw();
+		};
+
+		class	GradeTooHighException: public GradeException
+		{
+			public:
+				const char* what() const throw();
+		};
 };
 
 #endif /* FORM_H */

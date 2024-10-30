@@ -4,6 +4,7 @@ NAME	=	Bureaucrat
 
 SRC		=	src/main.cpp\
 			src/Bureaucrat.cpp\
+			src/Form.cpp
 
 
 OBJ		=	$(patsubst src/%.cpp, obj/%.o, $(SRC))
@@ -21,7 +22,7 @@ $(NAME): $(OBJ)
 
 $(OBJ_DIR)/%.o:	src/%.cpp Makefile includes/Bureaucrat.hpp
 	@mkdir -p $(@D)
-	$(CC) $(INC) -c $< -o $@
+	@$(CC) $(INC) -c $< -o $@
 
 simple:
 	@clear
