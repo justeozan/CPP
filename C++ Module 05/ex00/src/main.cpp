@@ -2,20 +2,53 @@
 
 #include <stdlib.h>
 
-int	main(int ac, char **av)
+int	main(void)
 {
-	for (int i = 1; i < ac; i += 2)
-	{
-		Bureaucrat bureaucrat(av[i], atoi(av[i + 1]));
-		std::cout << std::endl;
-		std::cout << "\nname : " << bureaucrat.getName() << "\ngrade : " << bureaucrat.getGrade() << std::endl;
-		std::cout << std::endl;
-		if ( i % 2 == 0)
-			bureaucrat.incrementGrade();
-		else
-			bureaucrat.decrementGrade();
-		std::cout << "name : " << bureaucrat.getName() << "\ngrade : " << bureaucrat.getGrade() << std::endl;
-		std::cout << std::endl;
+	try {
+		Bureaucrat bureaucrat("Danny", 151);
+	} catch (const std::exception& e) {
+		std::cout << RED << e.what() << RESET << std::endl;
+	}
+	std::cout << std::endl;
+
+	try {
+		Bureaucrat bureaucrat("John", 0);
+	} catch (const std::exception& e) {
+		std::cout << RED << e.what() << RESET << std::endl;
+	}
+	std::cout << std::endl;
+
+	try {
+		Bureaucrat bureaucrat("The king", 1);
+		bureaucrat.decrementGrade();
+		bureaucrat.incrementGrade();
+		bureaucrat.incrementGrade();
+	} catch (const std::exception& e) {
+		std::cout << RED << e.what() << RESET << std::endl;
+	}
+	std::cout << std::endl;
+
+	try {
+		Bureaucrat bureaucrat("No one", 150);
+		bureaucrat.incrementGrade();
+		bureaucrat.decrementGrade();
+		bureaucrat.decrementGrade();
+
+	} catch (const std::exception& e) {
+		std::cout << RED << e.what() << RESET << std::endl;
+	}
+
+	std::cout << std::endl;
+
+	try {
+		Bureaucrat bureaucrat("test", 79);
+		Bureaucrat bureaucrat2(bureaucrat);
+		Bureaucrat bureaucrat3("test222", 22);
+		bureaucrat3 = bureaucrat2;
+		std::cout << bureaucrat2 << std::endl;
+		std::cout << bureaucrat3 << std::endl;
+	} catch (const std::exception& e) {
+		std::cout << RED << e.what() << RESET << std::endl;
 	}
 	return (0);
 }

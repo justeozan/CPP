@@ -24,12 +24,10 @@ $(OBJ_DIR)/%.o:	src/%.cpp Makefile includes/Bureaucrat.hpp
 	$(CC) $(INC) -c $< -o $@
 
 simple:
+	@make fclean
 	@clear
 	@make all -s
-	./Bureaucrat "Danny" "2"
-	./Bureaucrat "John" "3"
-	./Bureaucrat "The King" "0"
-	./Bureaucrat "No one" "160"
+	./Bureaucrat
 	@make fclean -s
 
 all:	$(NAME)

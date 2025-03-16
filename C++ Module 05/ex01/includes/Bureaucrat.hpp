@@ -2,38 +2,48 @@
 # define BUREAUCRAT_HPP
 
 #include <iostream>
+#include "Form.hpp"
+
+/*===========================================*/
+/*                  CLASS                    */
+/*===========================================*/
+
+class Form;
 
 class Bureaucrat
 {
 	private:
-		int			_grade;
 		std::string	_name;
+		int			_grade;
 
 	public:
-		Bureaucrat(std::string const name, int const grade);
+		Bureaucrat(void);
+		Bureaucrat(std::string name, int grade);
+		Bureaucrat(const Bureaucrat& copy);
+		Bureaucrat& operator=(const Bureaucrat& copy);
 		~Bureaucrat(void);
 
-		std::string	getName();
-		int			getGrade();
+		std::string	getName() const;
+		int			getGrade() const;
 
 		void		incrementGrade();
 		void		decrementGrade();
 
-		class GradeException: public std::exception {};
+		void		signForm(Form &form) const;
 
-		class GradeTooHighException: public GradeException
+		class GradeTooHighException: public std::exception
 		{
 			public:
 				const char* what() const throw();
 		};
 
-		class GradeTooLowException: public GradeException
+		class GradeTooLowException: public std::exception
 		{
 			public:
 				const char* what() const throw();
 		};
 };
 
-
+std::ostream&	operator<<(std::ostream& os, const Bureaucrat& bureaucrat);
 
 #endif /* BUREAUCRAT_HPP */
