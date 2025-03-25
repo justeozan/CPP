@@ -5,6 +5,7 @@ NAME	=	Bureaucrat
 SRC		=	src/main.cpp\
 			src/Bureaucrat.cpp\
 			src/AForm.cpp\
+			src/Intern.cpp\
 			src/PresidentialPardonForm.cpp\
 			src/RobotomyRequestForm.cpp\
 			src/ShrubberyCreationForm.cpp
