@@ -5,14 +5,14 @@
 int	main(void)
 {
 	try {
-		Form form("form", 0, 15);		
+		Form form("form", 0, 15);
 	} catch (const std::exception& e) {
 		std::cout << RED << e.what() << RESET << std::endl;
 	}
 	std::cout << std::endl;
 
 	try {
-		Form form("form", 15, 151);		
+		Form form("form", 15, 151);
 	} catch (const std::exception& e) {
 		std::cout << RED << e.what() << RESET << std::endl;
 	}

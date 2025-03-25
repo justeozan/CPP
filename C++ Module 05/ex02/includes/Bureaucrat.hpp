@@ -2,10 +2,13 @@
 # define BUREAUCRAT_HPP
 
 #include <iostream>
+#include "AForm.hpp"
 
-# define RED "\033[31m"
-# define GREEN "\033[32m"
-# define RESET "\033[0m"
+/*===========================================*/
+/*                  CLASS                    */
+/*===========================================*/
+
+class AForm;
 
 class Bureaucrat
 {
@@ -15,10 +18,9 @@ class Bureaucrat
 
 	public:
 		Bureaucrat(void);
-		Bureaucrat(std::string const name, int const grade);
-		Bureaucrat(Bureaucrat const& copy);
-		Bureaucrat& operator=(Bureaucrat const& copy);
-
+		Bureaucrat(std::string name, int grade);
+		Bureaucrat(const Bureaucrat& copy);
+		Bureaucrat& operator=(const Bureaucrat& copy);
 		~Bureaucrat(void);
 
 		std::string	getName() const;
@@ -26,6 +28,9 @@ class Bureaucrat
 
 		void		incrementGrade();
 		void		decrementGrade();
+
+		void		signForm(AForm& form) const;
+		void		executeForm(const AForm& form) const;
 
 		class GradeTooHighException: public std::exception
 		{
@@ -40,8 +45,6 @@ class Bureaucrat
 		};
 };
 
-std::ostream& operator<<(std::ostream& os, Bureaucrat const& bureaucrat);
-
-
+std::ostream&	operator<<(std::ostream& os, const Bureaucrat& bureaucrat);
 
 #endif /* BUREAUCRAT_HPP */

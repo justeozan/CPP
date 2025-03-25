@@ -4,7 +4,10 @@ NAME	=	Bureaucrat
 
 SRC		=	src/main.cpp\
 			src/Bureaucrat.cpp\
-			src/Form.cpp
+			src/AForm.cpp\
+			src/PresidentialPardonForm.cpp\
+			src/RobotomyRequestForm.cpp\
+			src/ShrubberyCreationForm.cpp
 
 
 OBJ		=	$(patsubst src/%.cpp, obj/%.o, $(SRC))
