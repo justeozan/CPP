@@ -10,9 +10,12 @@ ScalarConverter &ScalarConverter::operator=(const ScalarConverter &src) { (void)
  * @param input The input string to convert.
  */
 void ScalarConverter::convert(const std::string &input) {
+	if (input.empty())
+		throw impossibleConversion();
 	ScalarConverter::isOverflow(input);
 	if (ScalarConverter::isChar(input))
 		return;
+
 	ScalarConverter::isImpossible(input);
 	ScalarConverter::toChar(input);
 	ScalarConverter::toInt(input);
@@ -137,5 +140,3 @@ const char *ScalarConverter::impossibleConversion::what() const throw() {
 const char *ScalarConverter::overflowException::what() const throw() {
 	return ("The input is out of range. The conversion is impossible.");
 }
-
-
