@@ -1,6 +1,6 @@
 .DEFAULT_GOAL = all
 
-NAME = serialize
+NAME = Base
 
 #color 
 RESET   = "\033[0m"
@@ -14,8 +14,7 @@ WHITE   = "\033[37m"
 BOLD    = "\033[1m"
 
 SRC		=	src/main.cpp\
-			src/Serializer.cpp\
-			src/Data.cpp
+			src/Base.cpp\
 
 OBJ		=	$(patsubst src/%.cpp, obj/%.o, $(SRC))
 
@@ -29,7 +28,7 @@ OBJ_DIR	=	obj
 $(NAME): $(OBJ)
 	$(CC) $(INC) $(OBJ) -o $(NAME)
 
-$(OBJ_DIR)/%.o:	$(SRC_DIR)/%.cpp Makefile includes/Serializer.hpp includes/Data.hpp
+$(OBJ_DIR)/%.o:	$(SRC_DIR)/%.cpp Makefile includes/Base.hpp includes/A.hpp includes/B.hpp includes/C.hpp
 	@mkdir -p $(@D)
 	@$(CC) $(INC) -c $< -o $@
 
@@ -37,7 +36,6 @@ simple:
 	@clear
 	@make all -s
 	./$(NAME)
-	@make fclean -s
 
 all:	$(NAME)
 
