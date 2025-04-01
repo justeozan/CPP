@@ -12,23 +12,24 @@ int main() {
         }
 		
 		std::cout << YELLOW "==== Copy constructor + modif :" << RESET << std::endl;
-        Array<int> array2 = array1; // Test du constructeur de copie
-        array2[0] = 100; // Modifie la copie
+        Array<int> array2 = array1;
 
-        std::cout << "array1[0]: " << array1[0] << std::endl; // Devrait être 0
-        std::cout << "array2[0]: " << array2[0] << std::endl; // Devrait être 100
+        std::cout << "array1[0]: " << array1[0] << std::endl;
+        std::cout << "array2[0]: " << array2[0] << std::endl;
+        array2[0] = 100;
+        std::cout << "array2[0]: " << array2[0] << std::endl;
 
 		std::cout << YELLOW "==== Assignement operator :" << RESET << std::endl;
         Array<int> array3(5);
-        array3 = array1; // Test de l'opérateur d'assignation
-        std::cout << "array1[3]: " << array1[3] << std::endl; // Devrait être 30
-        std::cout << "array3[3]: " << array3[3] << std::endl; // Devrait être 30
+        array3 = array1;
+        std::cout << "array1[3]: " << array1[3] << std::endl;
+        std::cout << "array3[3]: " << array3[3] << std::endl;
 
         std::cout << "array1 size: " << array1.getSize() << std::endl;
         std::cout << "array3 size: " << array3.getSize() << std::endl;
 
 		std::cout << YELLOW "==== Test Access out of boundaries :" << RESET << std::endl;
-        std::cout << array1[10] << std::endl; // Devrait lancer une exception
+        std::cout << array1[10] << std::endl; // Should throw an exception
     } 
 	catch (const std::exception& e)
 	{
@@ -48,16 +49,17 @@ int main() {
 
 		std::cout << YELLOW "==== Copy constructor + modif :" << RESET << std::endl;
         Array<char> array2 = array1; 
+        std::cout << "array1[0]: " << array1[0] << std::endl;
+        std::cout << "array2[0]: " << array2[0] << std::endl;
         array2[0] = 'm';
-        std::cout << "array1[0]: " << array1[0] << std::endl; // Should be a
-        std::cout << "array2[0]: " << array2[0] << std::endl; // Should be m
+        std::cout << "array2[0]: " << array2[0] << std::endl;
 
 
 		std::cout << YELLOW "==== Assignement operator :" << RESET << std::endl;
         Array<char> array3(5);
         array3 = array1;
-        std::cout << "array1[1]: " << array1[1] << std::endl; // Should be b
-        std::cout << "array3[1]: " << array3[1] << std::endl; // Should be b
+        std::cout << "array1[1]: " << array1[1] << std::endl;
+        std::cout << "array3[1]: " << array3[1] << std::endl;
         std::cout << "array1 size: " << array1.getSize() << std::endl;
         std::cout << "array3 size: " << array3.getSize() << std::endl;
 
