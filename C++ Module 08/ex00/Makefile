@@ -1,6 +1,6 @@
 .DEFAULT_GOAL = all
 
-NAME = array
+NAME = easyfind
 
 #color 
 RESET   = "\033[0m"
@@ -26,7 +26,7 @@ OBJ_DIR	=	obj
 $(NAME): $(OBJ)
 	$(CC) $(INC) $(OBJ) -o $(NAME)
 
-$(OBJ_DIR)/%.o:	%.cpp Makefile Array.hpp
+$(OBJ_DIR)/%.o:	%.cpp Makefile easyfind.hpp
 	@mkdir -p $(@D)
 	@$(CC) $(INC) -c $< -o $@
 
@@ -34,7 +34,7 @@ simple:
 	@clear
 	@make all -s
 	./$(NAME)
-	@make clean -s
+	@make fclean -s
 
 all:	$(NAME)
 

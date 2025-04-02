@@ -7,13 +7,13 @@
 #define RESET "\033[0m"
 
 template <typename T>
-void iter(T *array, int length, void (*f)(T const& )) {
+void iter(T *array, int length, void (*f)(T&)) {
     for ( int i = 0; i < length; i++)
         f(array[i]);
 }
 
 template <typename T>
-void print(T const& x) {
+void print(T& x) {
     std::cout << GREEN << x << ", " << RESET;
 }
 
