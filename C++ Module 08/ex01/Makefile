@@ -1,19 +1,9 @@
 .DEFAULT_GOAL = all
 
-NAME = iter
-
-#color 
-RESET   = "\033[0m"
-RED     = "\033[31m"
-GREEN   = "\033[32m"
-YELLOW  = "\033[33m"
-BLUE    = "\033[34m"
-MAGENTA = "\033[35m"
-CYAN    = "\033[36m"
-WHITE   = "\033[37m"
-BOLD    = "\033[1m"
+NAME = span
 
 SRC		=	main.cpp\
+			Span.cpp
 
 OBJ		=	$(patsubst %.cpp, obj/%.o, $(SRC))
 
@@ -26,7 +16,7 @@ OBJ_DIR	=	obj
 $(NAME): $(OBJ)
 	$(CC) $(INC) $(OBJ) -o $(NAME)
 
-$(OBJ_DIR)/%.o:	%.cpp Makefile iter.hpp
+$(OBJ_DIR)/%.o:	%.cpp Makefile Span.hpp
 	@mkdir -p $(@D)
 	@$(CC) $(INC) -c $< -o $@
 
@@ -34,7 +24,7 @@ simple:
 	@clear
 	@make all -s
 	./$(NAME)
-	@make fclean -s
+	@make clean -s
 
 all:	$(NAME)
 
