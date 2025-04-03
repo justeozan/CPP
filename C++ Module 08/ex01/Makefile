@@ -34,7 +34,7 @@ simple:
 	@clear
 	@make all -s
 	./$(NAME)
-	@make clean -s
+	@make fclean -s
 
 all:	$(NAME)
 
