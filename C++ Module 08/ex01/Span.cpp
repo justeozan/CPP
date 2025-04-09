@@ -44,20 +44,36 @@ unsigned int Span::longestSpan(void) const {
 	return sorted.back() - sorted.front();
 }
 
-std::vector<int> Span::getVector() const { return _vector_int; }
-
-std::ostream& operator<<(std::ostream &os, const Span &span) {
-	const std::vector<int> &vector = span.getVector();
-	os << "[";
-	for (size_t i = 0; i < vector.size(); i++) {
-		os << vector[i];
-		if (i != vector.size() - 1)
-			os << ", ";
+void Span::addRange(std::vector<int>::iterator first, std::vector<int>::iterator last) {
+	if (last <= first)
+		throw SpanException();
+	if (_vector_int.size() + (last - first) > _size)
+		throw SpanException();
+	for (; first != last; first++) {
+		if (_vector_int.size() == _size)
+			throw SpanException();
+		_vector_int.push_back(*first);
 	}
-	os << "]";
-	return os;
+}
+
+void Span::getVector(void) const {
+	if (_vector_int.empty())
+		return;
+	std::cout << "[ ";
+	if (_vector_int.size() > 10) {
+		for (size_t i = 0; i < 10; i++)
+			std::cout << _vector_int[i] << " ";
+		std::cout << " ... ";
+		for (size_t i = _vector_int.size() - 10; i < _vector_int.size(); i++)
+			std::cout << _vector_int[i] << " ";
+		std::cout << "]" << std::endl;
+		return;
+	}
+	for (size_t i = 0; i < _vector_int.size(); i++)
+		std::cout << _vector_int[i] << " ";
+	std::cout << "]" << std::endl;
 }
 
 const char *Span::SpanException::what() const throw() {
-	return "Error: SpanException";
+	return "Error: The Vector is full or range is invalid";
 }

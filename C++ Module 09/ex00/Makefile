@@ -1,6 +1,6 @@
 .DEFAULT_GOAL = all
 
-NAME = easyfind
+NAME = btc
 
 SRC		=	main.cpp\
 
@@ -15,7 +15,7 @@ OBJ_DIR	=	obj
 $(NAME): $(OBJ)
 	$(CC) $(INC) $(OBJ) -o $(NAME)
 
-$(OBJ_DIR)/%.o:	%.cpp Makefile easyfind.hpp
+$(OBJ_DIR)/%.o:	%.cpp Makefile
 	@mkdir -p $(@D)
 	@$(CC) $(INC) -c $< -o $@
 

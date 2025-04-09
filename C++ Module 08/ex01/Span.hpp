@@ -5,6 +5,9 @@
 #include <vector>
 #include <algorithm>
 
+#define RED "\033[31m"
+#define RESET "\033[0m"
+
 class Span
 {
 	private:
@@ -18,26 +21,16 @@ class Span
 		Span(const Span &);
 		Span &operator=(const Span &);
 
-		void		addNumber(int n);
+		void			addNumber(int n);
+		void			addRange(std::vector<int>::iterator first, std::vector<int>::iterator last);
+		void			getVector(void) const;
+		unsigned int	shortestSpan(void) const;
+		unsigned int	longestSpan(void) const;
 
-		template <typename T>
-		void addRange(T first, T last)
-		{
-			for (; first != last; ++first)
-				addNumber(*first);
-		}
-		unsigned int shortestSpan(void) const;
-		unsigned int longestSpan(void) const;
-
-		std::vector<int> getVector() const;
-
-		class SpanException : public std::exception
-		{
+		class SpanException : public std::exception {
 			public:
 				const char *what() const throw();
-		};		
+		};
 };
-
-std::ostream& operator<<(std::ostream os, const Span &span);
 
 #endif  /* SPAN_HPP */
