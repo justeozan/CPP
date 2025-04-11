@@ -32,6 +32,8 @@ void	RPN::calculate(std::string input) {
 			int value;
 			std::istringstream iss(token);
 			iss >> value;
+			if (!isdigit(value))
+				throw std::runtime_error("Invalid operand");
 			_stack.push(value);
 		}
 	}

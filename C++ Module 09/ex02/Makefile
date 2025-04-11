@@ -1,8 +1,9 @@
 .DEFAULT_GOAL = all
 
-NAME = span
+NAME = PmergeMe
 
-SRC		=	main.cpp
+SRC		=	main.cpp \
+			PmergeMe.cpp
 
 OBJ		=	$(patsubst %.cpp, obj/%.o, $(SRC))
 
@@ -15,7 +16,7 @@ OBJ_DIR	=	obj
 $(NAME): $(OBJ)
 	$(CC) $(INC) $(OBJ) -o $(NAME)
 
-$(OBJ_DIR)/%.o:	%.cpp Makefile MutantStack.hpp
+$(OBJ_DIR)/%.o:	%.cpp Makefile PmergeMe.hpp
 	@mkdir -p $(@D)
 	@$(CC) $(INC) -c $< -o $@
 
