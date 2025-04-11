@@ -29,12 +29,9 @@ void	RPN::calculate(std::string input) {
 				_stack.push(a / b);
 			}
 		} else {
-			int value;
-			std::istringstream iss(token);
-			iss >> value;
-			if (isprint(token[0]) && !isdigit(token[0]))
+			if (!isdigit(token[0]))
 				throw std::runtime_error("Invalid operand");
-			_stack.push(value);
+			_stack.push(std::atoi(token.c_str()));
 		}
 	}
 	if (_stack.size() != 1)

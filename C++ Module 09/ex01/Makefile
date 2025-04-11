@@ -31,7 +31,7 @@ simple:
 	./$(NAME) "(81 9 *)"
 	./$(NAME) "5 0 /"
 	./$(NAME) "/ 4 0"
-	./$(NAME) "5 j +"
+	valgrind ./$(NAME) "5 j +"
 	@make clean -s
 
 all:	$(NAME)

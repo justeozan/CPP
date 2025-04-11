@@ -5,6 +5,7 @@
 #include <string>
 #include <stack>
 #include <sstream>
+#include <cstdlib>
 
 # define RED		"\e[31m"
 # define GREEN		"\e[32m"
