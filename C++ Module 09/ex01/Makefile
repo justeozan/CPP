@@ -1,9 +1,9 @@
 .DEFAULT_GOAL = all
 
-NAME = span
+NAME = RPN
 
 SRC		=	main.cpp\
-			Span.cpp
+			RPN.cpp
 
 OBJ		=	$(patsubst %.cpp, obj/%.o, $(SRC))
 
@@ -16,14 +16,21 @@ OBJ_DIR	=	obj
 $(NAME): $(OBJ)
 	$(CC) $(INC) $(OBJ) -o $(NAME)
 
-$(OBJ_DIR)/%.o:	%.cpp Makefile Span.hpp
+$(OBJ_DIR)/%.o:	%.cpp Makefile RPN.hpp
 	@mkdir -p $(@D)
 	@$(CC) $(INC) -c $< -o $@
 
 simple:
 	@clear
 	@make all -s
-	./$(NAME)
+	./$(NAME) "8 9 * 9 - 9 - 9 - 4 - 1 +"
+	./$(NAME) "7 7 * 7 -"
+	./$(NAME) "1 2 * 2 / 2 * 2 4 - +"
+	./$(NAME) "           0                  5                      /               "
+	./$(NAME) "(1 + 1)"
+	./$(NAME) "(81 9 *)"
+	./$(NAME) "5 0 /"
+	./$(NAME) "/ 4 0"
 	@make clean -s
 
 all:	$(NAME)
