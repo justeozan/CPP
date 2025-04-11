@@ -6,17 +6,33 @@
 
 class PmergeMe
 {
+	private:
+		std::list<int> _list;
+		std::vector<int> _vector;
+
 	public:
 		PmergeMe();
 		PmergeMe(const PmergeMe &src);
 		PmergeMe&	operator=(const PmergeMe &src);
 		~PmergeMe();
 
-		void	calculate(std::string input);
+		// Parsing & validation
+		void parseInput(char **av);
 
-	private:
-		std::list<int> _list;
-		std::vector<int> _vector;
+		// Sorting functions
+		void sortVector();
+		void sortList();
+
+		// Merge-Insertion logic
+		template <typename T>
+		void mergeInsertSort(T& container);
+
+		// Display & debug
+		void printBefore() const;
+		void printAfter() const;
+
+		// Benchmark
+		void benchmark();
 };
 
 #endif
