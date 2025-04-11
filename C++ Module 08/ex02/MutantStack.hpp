@@ -10,7 +10,7 @@
 # define RESET		"\e[0m"
 # define GREEN		"\e[32m"
 # define YELLOW		"\e[93m"
-# define DISCRET	"\e[90m\e[2m\e[3m"
+# define DISCRET	"\e[90;2;3m"
 
 
 template <typename T>

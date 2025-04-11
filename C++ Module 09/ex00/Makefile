@@ -3,6 +3,7 @@
 NAME = btc
 
 SRC		=	main.cpp\
+			BitcoinExchange.cpp
 
 OBJ		=	$(patsubst %.cpp, obj/%.o, $(SRC))
 
@@ -22,7 +23,7 @@ $(OBJ_DIR)/%.o:	%.cpp Makefile
 simple:
 	@clear
 	@make all -s
-	./$(NAME)
+	./$(NAME) input.txt
 	@make fclean -s
 
 all:	$(NAME)
