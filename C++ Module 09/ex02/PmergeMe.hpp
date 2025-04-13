@@ -42,8 +42,8 @@ class PmergeMe
 				return;
 		
 			typedef typename T::iterator It;
-			T pairs;
-			T unpaired;
+			T bigs;
+			T smalls;
 		
 			It it = container.begin();
 			while (it != container.end()) {
@@ -51,37 +51,37 @@ class PmergeMe
 				++next;
 				if (next != container.end()) {
 					if (*it < *next) {
-						pairs.push_back(*next);
-						unpaired.push_back(*it);
+						bigs.push_back(*next);
+						smalls.push_back(*it);
 					} else {
-						pairs.push_back(*it);
-						unpaired.push_back(*next);
+						bigs.push_back(*it);
+						smalls.push_back(*next);
 					}
 					++it; ++it;
 				} else {
-					pairs.push_back(*it);
+					bigs.push_back(*it);
 					++it;
 				}
 			}
 		
-			sort(pairs);
+			sort(bigs);
 		
-			std::vector<int> indices = generateJacobsthalIndices(unpaired.size());
-			std::vector<bool> inserted(unpaired.size(), false);
+			std::vector<int> indices = generateJacobsthalIndices(smalls.size());
+			std::vector<bool> inserted(smalls.size(), false);
 		
-			container = pairs;
+			container = bigs;
 		
 			for (std::vector<int>::size_type i = 0; i < indices.size(); ++i) {
 				int idx = indices[i];
-				if (idx < static_cast<int>(unpaired.size()) && !inserted[idx]) {
+				if (idx < static_cast<int>(smalls.size()) && !inserted[idx]) {
 					inserted[idx] = true;
-					int value = getNth(unpaired, idx);
+					int value = getNth(smalls, idx);
 					insertSorted(container, value);
 				}
 			}
-			for (std::vector<int>::size_type i = 0; i < unpaired.size(); ++i) {
+			for (std::vector<int>::size_type i = 0; i < smalls.size(); ++i) {
 				if (!inserted[i]) {
-					int value = getNth(unpaired, i);
+					int value = getNth(smalls, i);
 					insertSorted(container, value);
 				}
 			}
