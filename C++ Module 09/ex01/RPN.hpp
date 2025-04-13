@@ -13,7 +13,6 @@
 # define DISCRET	"\e[90;2;3m"
 # define RESET		"\e[0m"
 
-
 class RPN {
 	private:
         std::stack<int> _stack;

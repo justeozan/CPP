@@ -56,7 +56,9 @@
 		"charconv": "cpp",
 		"format": "cpp",
 		"variant": "cpp",
-		"text_encoding": "cpp"
+		"text_encoding": "cpp",
+		"list": "cpp",
+		"map": "cpp"
 	},
 	"editor.tokenColorCustomizations": {
 		"comments": "",
