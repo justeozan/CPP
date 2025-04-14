@@ -79,12 +79,16 @@ std::vector<int> PmergeMe::generateJacobsthalIndices(int size) const {
 
 // Helpers
 int PmergeMe::getNth(const std::list<int>& lst, int n) {
+	// Création d'un itérateur constant pointant au début de la liste
 	std::list<int>::const_iterator it = lst.begin();
+	// Avance l'itérateur de 'n' positions (coût linéaire en C++98)
 	std::advance(it, n);
+	// Retourne la valeur à cette position
 	return *it;
 }
 
 int PmergeMe::getNth(const std::vector<int>& vec, int n) {
+	// Retourne directement l'élément à l'index n (accès direct en O(1))
 	return vec[n];
 }
 

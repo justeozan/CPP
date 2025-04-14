@@ -31,10 +31,12 @@ void	RPN::calculate(std::string input) {
 		} else {
 			if (!isdigit(token[0]))
 				throw std::runtime_error("Invalid operand");
+			if (token.size() > 1)
+				throw std::runtime_error("Number must be between 0 and 9");
 			_stack.push(std::atoi(token.c_str()));
 		}
 	}
 	if (_stack.size() != 1)
 		throw std::runtime_error("Too many operands");
-	std::cout << _stack.top() << std::endl;
+	std::cout << GREEN << _stack.top() << RESET << std::endl;
 }
