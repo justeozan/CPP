@@ -1,10 +1,11 @@
 .DEFAULT_GOAL = all
 
-NAME = btc
+RESET = \e[0m
+DISCRET = \e[90;3;3m
 
+NAME = btc
 SRC		=	main.cpp\
 			BitcoinExchange.cpp
-
 OBJ		=	$(patsubst %.cpp, obj/%.o, $(SRC))
 
 CFLAGS	=	-Werror -Wall -Wextra -std=c++98
@@ -23,7 +24,13 @@ $(OBJ_DIR)/%.o:	%.cpp Makefile
 simple:
 	@clear
 	@make all -s
-	./$(NAME) input.txt
+	@echo "$(DISCRET)./$(NAME) input.txt$(RESET)" && ./$(NAME) input.txt
+	@chmod 000 input.txt
+	@echo "$(DISCRET)chmod 000 input.txt\n./$(NAME) input.txt$(RESET)" && ./$(NAME) input.txt
+	@chmod 777 input.txt
+	@echo "$(DISCRET)./$(NAME) $(RESET)" && ./$(NAME) 
+	@echo "$(DISCRET)./$(NAME) invalid_header.txt$(RESET)" && ./$(NAME) invalid_header.txt
+	@echo "$(DISCRET)./$(NAME) non-exist.txt$(RESET)" && ./$(NAME) non-exist.txt
 	@make fclean -s
 
 all:	$(NAME)
@@ -35,6 +42,6 @@ clean:
 fclean:	clean
 	$(RM) $(NAME)
 
-re:		fclean simple
+re:		fclean all
 
 .PHONY:	simple all clean fclean re

@@ -40,6 +40,7 @@ class BitcoinExchange {
 		void    displayTransactions(char const* filename);
 
 		//verif function
+		void		check(bool condition, std::string message);
 		std::tm		parseDate(std::string date);
 		float		parseRate(std::string number);
 
