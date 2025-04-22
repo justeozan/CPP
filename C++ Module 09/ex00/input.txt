@@ -16,29 +16,3 @@ date | value
 2011--9-03 | 3
 2011-09--3 | 3
 -2011-01-03 | 3
-Error: connect ENOENT /run/user/102796/vscode-git-19a9e2a3e0.sock
-    at PipeConnectWrap.afterConnect [as oncomplete] (node:net:1611:16) {
-  errno: -2,
-  code: 'ENOENT',
-  syscall: 'connect',
-  address: '/run/user/102796/vscode-git-19a9e2a3e0.sock'
-}
-Missing or invalid credentials.
-Error: connect ENOENT /run/user/102796/vscode-git-19a9e2a3e0.sock
-    at PipeConnectWrap.afterConnect [as oncomplete] (node:net:1611:16) {
-  errno: -2,
-  code: 'ENOENT',
-  syscall: 'connect',
-  address: '/run/user/102796/vscode-git-19a9e2a3e0.sock'
-}
-remote: No anonymous write access.
-fatal: Authentication failed for 'https://github.com/justeozan/CPP.git/'
-2025-04-16 15:36:02.689 [info] > git config --get commit.template [17ms]
-2025-04-16 15:36:02.689 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/main refs/remotes/main [1ms]
-2025-04-16 15:36:02.702 [warning] [Git][revParse] Unable to read file: ENOENT: no such file or directory, open '/home/ozasahin/Github/CPP/.git/refs/remotes/origin/main'
-2025-04-16 15:36:02.702 [info] > git rev-parse refs/remotes/origin/main [1ms]
-2025-04-16 15:36:02.719 [info] > git status -z -uall [9ms]
-2025-04-16 15:36:02.719 [info] > git for-each-ref --sort -committerdate --format %(refname)%00%(objectname)%00%(*objectname) [1ms]
-2025-04-16 15:36:05.302 [info] > git ls-files --stage -- C++ Module 09/ex00/data.csv [1ms]
-2025-04-16 15:36:05.312 [info] > git cat-file -s e5d7ffc885cdc5ad593fbc0fe86c2ec134e0c37d [1ms]
-2025-04-16 15:36:05.365 [info] > git show --textconv :C++ Module 09/ex00/data.csv [1ms]

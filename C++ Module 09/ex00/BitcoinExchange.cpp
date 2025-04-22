@@ -1,6 +1,5 @@
 #include "BitcoinExchange.hpp"
 
-
 BitcoinExchange::BitcoinExchange() {}
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &src) { *this = src; }
 BitcoinExchange&	BitcoinExchange::operator=(const BitcoinExchange &src) {
@@ -16,16 +15,28 @@ void	BitcoinExchange::check(bool condition, std::string message) {
 		throw std::runtime_error(message);
 }
 
-std::tm    BitcoinExchange::parseDate(std::string date) {
+std::tm	BitcoinExchange::parseDate(std::string date) {
 	std::tm tm_buf;
 
 	memset(&tm_buf, 0, sizeof(std::tm));
 	if (!strptime(date.c_str(), "%Y-%m-%d", &tm_buf))
 		throw std::runtime_error("bad input => " + date);
-	return (tm_buf);
+
+	int year  = tm_buf.tm_year;
+	int month = tm_buf.tm_mon;
+	int mday  = tm_buf.tm_mday;
+
+	std::time_t t = mktime(&tm_buf);
+	if (t == -1)
+		throw std::runtime_error("bad input => " + date);
+
+	if (tm_buf.tm_year != year || tm_buf.tm_mon != month || tm_buf.tm_mday != mday)
+		throw std::runtime_error("bad input => " + date);
+
+	return tm_buf;
 }
 
-float    BitcoinExchange::parseRate(std::string number) {
+float	BitcoinExchange::parseRate(std::string number) {
 	std::istringstream	iss(number);
 	float				rate;
 
@@ -111,8 +122,8 @@ void	BitcoinExchange::printData() const {
 	for (int i = 0; i < 3; ++i) {
 		char buffer[20];
 		strftime(buffer, sizeof(buffer), "%Y-%m-%d", &it->first);
-        std::cout << buffer << ", " << it->second << std::endl;
-        ++it;
+		std::cout << buffer << ", " << it->second << std::endl;
+		++it;
 	}
 	std::cout << "======= ... ========" << std::endl;
 	it = _data.end();
@@ -122,7 +133,7 @@ void	BitcoinExchange::printData() const {
 	for (int i = 0; i < 3; ++i) {
 		char buffer[20];
 		strftime(buffer, sizeof(buffer), "%Y-%m-%d", &it->first);
-        std::cout << buffer << ", " << it->second << std::endl;
+		std::cout << buffer << ", " << it->second << std::endl;
 		++it;
 	}
 	std::cout << "=====================" << std::endl;
